@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="dbca7b7c-eea9-48f1-8b6c-186606166940" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="dws-presentation-apiFlow" doc:id="a8b249f7-2020-498f-80f4-a661c506bb8f" >
+		<http:listener doc:name="Listener" doc:id="c391ab0f-ef16-4732-ba9b-de0d42bfe59f" config-ref="HTTP_Listener_config" path="/api"/>
+		<logger level="INFO" doc:name="Logger" doc:id="904ba1a5-4a9b-430f-a9b7-44c63d432e89" message="####start loggor####"/>
+		<set-payload value='#["message presentation-api deploy"]' doc:name="Set Payload" doc:id="e429f851-a174-46f6-b4fa-a485bb1cca74" />
+		<logger level="INFO" doc:name="Logger" doc:id="3e333a1c-3904-4629-bf14-161401e3dcc6" message="########end logger ######"/>
+	</flow>
+</mule>
